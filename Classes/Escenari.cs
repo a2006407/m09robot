@@ -13,7 +13,7 @@ namespace Robot.Classes {
         private int tresorX;
         private int tresorY;
 
-        Random rng;
+        public Random rng;
 
         Image tresorImg;
 
