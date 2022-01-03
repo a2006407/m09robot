@@ -18,14 +18,25 @@ namespace Robot.Classes {
 
         Direcio dir;
 
-        public int posX;
-        public int posY;
+        private int posX;
+        private int posY;
 
         public Image img = new Image();
 
+        public int PosX { get => posX; set {
+                posX = value;
+                this.SetValue(Grid.RowProperty, posX);
+            }
+        }
+        public int PosY { get => posY; set {
+                posY = value;
+                this.SetValue(Grid.ColumnProperty, posY);
+            }
+        }
+
         public Robot(int posX, int posY) {
-            this.posX = posX;
-            this.posY = posY;
+            this.PosX = posX;
+            this.PosY = posY;
             img.Source = new BitmapImage(new Uri("/Robot;component/Imatges/robot.jpg",UriKind.Relative));
             Content = img;
         }
@@ -36,16 +47,20 @@ namespace Robot.Classes {
             if (rndInt <= 2) {
                 switch (dir) {
                     case Direcio.Nord:
-                        esc.PosValida(posX, posY-1);
+                        if (esc.PosValida(PosX, PosY - 1))
+                            PosY -= 1;
                         break;
                     case Direcio.Sud:
-                        esc.PosValida(posX, posY+1);
+                        if (esc.PosValida(PosX, PosY + 1))
+                            PosY += 1;
                         break;
                     case Direcio.Est:
-                        esc.PosValida(posX -1, posY);
+                        if (esc.PosValida(PosX - 1, PosY))
+                            this.PosX -= 1; 
                         break;
                     case Direcio.Oest:
-                        esc.PosValida(posX + 1, posY);
+                        if (esc.PosValida(PosX + 1, PosY))
+                            this.PosX += 1;
                         break;
                     default:
                         break;

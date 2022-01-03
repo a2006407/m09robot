@@ -15,7 +15,8 @@ namespace Robot.Classes {
         private int tresorY;
 
         public Random rng;
-
+        
+        public Robot robot;
         Image tresorImg;
 
         public Escenari(int fil, int col) {
@@ -50,12 +51,16 @@ namespace Robot.Classes {
             this.ShowGridLines = true;
 
 
-            Robot r = new Robot(3, 3);
-            r.SetValue(Grid.RowProperty, r.posX);
-            r.SetValue(Grid.ColumnProperty, r.posY);
-            Children.Add(r);
+            robot = new Robot(3, 3);
+            robot.SetValue(Grid.RowProperty, robot.PosX);
+            robot.SetValue(Grid.ColumnProperty, robot.PosY);
+             
+            Children.Add(robot);
         }
 
+        internal void Mou() {
+            robot.Mou(this);
+        }
 
         public bool PosValida(int x, int y) {
             return x >= 0 && y >= 0 && x < columnes && y < files && !(x == tresorX && y == tresorY);

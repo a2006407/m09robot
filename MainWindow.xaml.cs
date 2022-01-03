@@ -19,10 +19,15 @@ namespace Robot {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        Escenari esc;
         public MainWindow() {
             InitializeComponent();
-            Escenari esc = new Escenari(5,5);
+            esc = new Escenari(5,5);
             mainGrid.Children.Add(esc);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            esc.Mou();  
         }
     }
 }
