@@ -6,4 +6,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Imatges\robot.jpg" />
+    <None Remove="Imatges\tresor.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Imatges\robot.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Imatges\tresor.png" />
+  </ItemGroup>
+
 </Project>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace Robot.Classes {
     class Escenari : Grid {
@@ -33,15 +34,26 @@ namespace Robot.Classes {
             }
 
 
-            tresorX = rng.Next(columnes);
-            tresorY = rng.Next(files);
+            tresorX = 2;//rng.Next(columnes);
+            tresorY = 2;//rng.Next(files);
 
+            tresorImg = new Image();
+
+            tresorImg.Source = new BitmapImage(new Uri("/Robot;component/Imatges/tresor.png",UriKind.Relative));
+            
+            
             tresorImg.SetValue(Grid.RowProperty, tresorY);
             tresorImg.SetValue(Grid.ColumnProperty, tresorX);
 
             this.Children.Add(tresorImg);
 
             this.ShowGridLines = true;
+
+
+            Robot r = new Robot(3, 3);
+            r.SetValue(Grid.RowProperty, r.posX);
+            r.SetValue(Grid.ColumnProperty, r.posY);
+            Children.Add(r);
         }
 
 

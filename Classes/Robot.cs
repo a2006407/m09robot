@@ -18,14 +18,16 @@ namespace Robot.Classes {
 
         Direcio dir;
 
-        private int posX;
-        private int posY;
+        public int posX;
+        public int posY;
+
+        public Image img = new Image();
 
         public Robot(int posX, int posY) {
             this.posX = posX;
             this.posY = posY;
-
-            Content = new BitmapImage(new Uri("/Robot;/Imatges/robot.jpg",UriKind.Relative));
+            img.Source = new BitmapImage(new Uri("/Robot;component/Imatges/robot.jpg",UriKind.Relative));
+            Content = img;
         }
 
 

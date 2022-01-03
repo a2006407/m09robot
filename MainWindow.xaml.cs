@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Robot.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,8 @@ namespace Robot {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+            Escenari esc = new Escenari(5,5);
+            mainGrid.Children.Add(esc);
         }
     }
 }
