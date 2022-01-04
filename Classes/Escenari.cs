@@ -40,7 +40,9 @@ namespace Robot.Classes {
 
             tresorImg = new Image();
 
+
             tresorImg.Source = new BitmapImage(new Uri("/Robot;component/Imatges/tresor.png",UriKind.Relative));
+            
             
             
             tresorImg.SetValue(Grid.RowProperty, tresorY);

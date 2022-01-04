@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Robot.Classes {
@@ -38,7 +39,37 @@ namespace Robot.Classes {
             this.PosX = posX;
             this.PosY = posY;
             img.Source = new BitmapImage(new Uri("/Robot;component/Imatges/robot.jpg",UriKind.Relative));
-            Content = img;
+
+            BitmapImage bmpImg = new BitmapImage();
+
+            bmpImg.BeginInit();
+
+            bmpImg.UriSource = new Uri("../../../Imatges/arrow.png",UriKind.Relative);
+
+            bmpImg.EndInit();
+
+            TransformedBitmap tranformBmp = new TransformedBitmap();
+
+            tranformBmp.BeginInit();
+
+            tranformBmp.Source = bmpImg;
+
+            RotateTransform r = new RotateTransform(90);
+
+            tranformBmp.Transform = r;
+
+            tranformBmp.EndInit();
+
+            Image arrow = new Image();
+            arrow.Source = tranformBmp;
+
+
+
+            Grid g = new Grid();
+            g.Children.Add(img);
+            g.Children.Add(arrow);
+
+            Content = g;
         }
 
 

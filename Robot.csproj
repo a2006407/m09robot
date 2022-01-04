@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Imatges\arrow.png" />
     <None Remove="Imatges\robot.jpg" />
     <None Remove="Imatges\tresor.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Imatges\arrow.png" />
     <Resource Include="Imatges\robot.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
