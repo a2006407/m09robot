@@ -5,11 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Robot"
         mc:Ignorable="d"
+        FontSize="25"
         Title="EndWindow" Height="450" Width="800">
-    <StackPanel>
-        <TextBlock Text="Joc acabat!" TextAlignment="Center" FontSize="45"/>
-        <TextBlock Text="Temps Tardat" />
-        <TextBlock Text="Moviments fets" />
-        <TextBlock Text="Canvis de direccio" />
-    </StackPanel>
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" Text="Joc acabat!" TextAlignment="Center" FontSize="45"/>
+        <Button DockPanel.Dock="Bottom" Content="Tornar" Margin="10"/>
+        <Grid DockPanel.Dock="Top" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="10" Grid.Column="0" Grid.Row="0" Text="Temps Tardat" />
+            <TextBlock  Margin="10" Grid.Column="0" Grid.Row="1"  Text="Moviments fets" />
+            <TextBlock  Margin="10" Grid.Column="0" Grid.Row="2" Text="Canvis de direccio" />
+
+            <TextBlock  Margin="10" Grid.Column="1" Grid.Row="0" Text="0" HorizontalAlignment="Right"/>
+            <TextBlock  Margin="10" Grid.Column="1" Grid.Row="1" Text="0" HorizontalAlignment="Right"/>
+            <TextBlock  Margin="10" Grid.Column="1" Grid.Row="2" Text="0" HorizontalAlignment="Right"/>
+        </Grid>
+    </DockPanel>
 </Window>
