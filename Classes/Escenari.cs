@@ -65,7 +65,7 @@ namespace Robot.Classes {
         }
 
         public bool PosValida(int x, int y) {
-            return x >= 0 && y >= 0 && x < columnes && y < files && !(x == tresorX && y == tresorY);
+            return x >= 0 && y >= 0 && x < columnes && y < files; //&& !(x == tresorX && y == tresorY);
         }
     }
 }

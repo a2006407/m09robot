@@ -9,10 +9,10 @@ using System.Windows.Media.Imaging;
 
 namespace Robot.Classes {
     enum Direcio {
-        Nord,//adalt
-        Sud,//abaix
-        Est,//dreta
-        Oest//esquerra
+        Nord = 270,//adalt 270
+        Sud = 90,//abaix 90
+        Est = 0,//dreta 0
+        Oest = 180//esquerra 180
     }
     class Robot : UserControl {
 
@@ -23,28 +23,37 @@ namespace Robot.Classes {
         private int posY;
 
         public Image img = new Image();
+        Grid grid = new Grid();
 
         public int PosX { get => posX; set {
                 posX = value;
-                this.SetValue(Grid.RowProperty, posX);
+                this.SetValue(Grid.ColumnProperty, posX);
             }
         }
         public int PosY { get => posY; set {
                 posY = value;
-                this.SetValue(Grid.ColumnProperty, posY);
+                this.SetValue(Grid.RowProperty, posY);
             }
         }
 
         public Robot(int posX, int posY) {
             this.PosX = posX;
             this.PosY = posY;
-            img.Source = new BitmapImage(new Uri("/Robot;component/Imatges/robot.jpg",UriKind.Relative));
+            img.Source = new BitmapImage(new Uri("/Robot;component/Imatges/robot.jpg", UriKind.Relative));
 
+            grid.Children.Add(img);
+
+            ArrowDirection(dir);
+
+            Content = grid;
+        }
+
+        private void ArrowDirection(Direcio dir) {
             BitmapImage bmpImg = new BitmapImage();
 
             bmpImg.BeginInit();
 
-            bmpImg.UriSource = new Uri("../../../Imatges/arrow.png",UriKind.Relative);
+            bmpImg.UriSource = new Uri("../../../Imatges/arrow.png", UriKind.Relative);
 
             bmpImg.EndInit();
 
@@ -54,7 +63,7 @@ namespace Robot.Classes {
 
             tranformBmp.Source = bmpImg;
 
-            RotateTransform r = new RotateTransform(90);
+            RotateTransform r = new RotateTransform((int)dir);
 
             tranformBmp.Transform = r;
 
@@ -63,15 +72,10 @@ namespace Robot.Classes {
             Image arrow = new Image();
             arrow.Source = tranformBmp;
 
-
-
-            Grid g = new Grid();
-            g.Children.Add(img);
-            g.Children.Add(arrow);
-
-            Content = g;
+            if(grid.Children.Count>1)
+                grid.Children.RemoveAt(1);
+            grid.Children.Add(arrow);
         }
-
 
         public void Mou(Escenari esc) {
             int rndInt = esc.rng.Next(5);
@@ -86,12 +90,12 @@ namespace Robot.Classes {
                             PosY += 1;
                         break;
                     case Direcio.Est:
-                        if (esc.PosValida(PosX - 1, PosY))
-                            this.PosX -= 1; 
+                        if (esc.PosValida(PosX + 1, PosY))
+                            this.PosX += 1; 
                         break;
                     case Direcio.Oest:
-                        if (esc.PosValida(PosX + 1, PosY))
-                            this.PosX += 1;
+                        if (esc.PosValida(PosX - 1, PosY))
+                            this.PosX -= 1;
                         break;
                     default:
                         break;
@@ -125,6 +129,7 @@ namespace Robot.Classes {
                     default:
                         break;
                 }
+                ArrowDirection(dir);
             }
         }
     }
