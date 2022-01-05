@@ -22,7 +22,7 @@ namespace Robot {
 
             TBtemps.Text = temps.ToString();
             TBmov.Text = moviments.ToString();
-            TBcandir.Text = moviments.ToString();
+            TBcandir.Text = canvisdeDir.ToString();
 
         }
     }

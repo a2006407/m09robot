@@ -17,6 +17,7 @@ namespace Robot.Classes {
     class Robot : UserControl {
 
 
+        public int nmov = 0, ndir = 0;
         Direcio dir;
 
         private int posX;
@@ -99,7 +100,9 @@ namespace Robot.Classes {
                         break;
                     default:
                         break;
+
                 }
+                nmov++;
             } else {
                 switch (dir) {
                     case Direcio.Nord:
@@ -129,6 +132,7 @@ namespace Robot.Classes {
                     default:
                         break;
                 }
+                ndir++;
                 ArrowDirection(dir);
             }
         }
