@@ -35,8 +35,8 @@ namespace Robot.Classes {
             }
 
 
-            tresorX = 2;//rng.Next(columnes);
-            tresorY = 2;//rng.Next(files);
+            tresorX = rng.Next(columnes);
+            tresorY = rng.Next(files);
 
             tresorImg = new Image();
 
@@ -62,6 +62,9 @@ namespace Robot.Classes {
 
         internal void Mou() {
             robot.Mou(this);
+            if (tresorX == robot.PosX && tresorY == robot.PosY)
+                Console.WriteLine("Win!");
+                //win condition          
         }
 
         public bool PosValida(int x, int y) {
