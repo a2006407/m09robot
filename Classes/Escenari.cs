@@ -53,18 +53,19 @@ namespace Robot.Classes {
             this.ShowGridLines = true;
 
 
-            robot = new Robot(3, 3);
+            robot = new Robot(rng.Next(columnes),rng.Next(files));
             robot.SetValue(Grid.RowProperty, robot.PosX);
             robot.SetValue(Grid.ColumnProperty, robot.PosY);
              
             Children.Add(robot);
         }
 
-        internal void Mou() {
+        internal bool Mou() {
             robot.Mou(this);
             if (tresorX == robot.PosX && tresorY == robot.PosY)
-                Console.WriteLine("Win!");
-                //win condition          
+                return true;
+            else
+                return false;
         }
 
         public bool PosValida(int x, int y) {

@@ -22,12 +22,16 @@ namespace Robot {
         Escenari esc;
         public MainWindow() {
             InitializeComponent();
-            esc = new Escenari(5,5);
+            esc = new Escenari(3,3);
             mainGrid.Children.Add(esc);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-            esc.Mou();  
+            if (esc.Mou()) {
+                EndWindow endW = new EndWindow(0, 0, 0);
+                endW.ShowDialog();
+            }
+                
         }
     }
 }

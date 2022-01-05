@@ -17,8 +17,13 @@ namespace Robot {
     /// Lógica de interacción para EndWindow.xaml
     /// </summary>
     public partial class EndWindow : Window {
-        public EndWindow() {
+        public EndWindow(int temps, int moviments, int canvisdeDir) {
             InitializeComponent();
+
+            TBtemps.Text = temps.ToString();
+            TBmov.Text = moviments.ToString();
+            TBcandir.Text = moviments.ToString();
+
         }
     }
 }

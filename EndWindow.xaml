@@ -24,9 +24,9 @@
             <TextBlock  Margin="10" Grid.Column="0" Grid.Row="1"  Text="Moviments fets" />
             <TextBlock  Margin="10" Grid.Column="0" Grid.Row="2" Text="Canvis de direccio" />
 
-            <TextBlock  Margin="10" Grid.Column="1" Grid.Row="0" Text="0" HorizontalAlignment="Right"/>
-            <TextBlock  Margin="10" Grid.Column="1" Grid.Row="1" Text="0" HorizontalAlignment="Right"/>
-            <TextBlock  Margin="10" Grid.Column="1" Grid.Row="2" Text="0" HorizontalAlignment="Right"/>
+            <TextBlock  x:Name="TBtemps" Margin="10" Grid.Column="1" Grid.Row="0" Text="0" HorizontalAlignment="Right"/>
+            <TextBlock  x:Name="TBmov" Margin="10" Grid.Column="1" Grid.Row="1" Text="0" HorizontalAlignment="Right"/>
+            <TextBlock  x:Name="TBcandir" Margin="10" Grid.Column="1" Grid.Row="2" Text="0" HorizontalAlignment="Right"/>
         </Grid>
     </DockPanel>
 </Window>
