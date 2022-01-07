@@ -23,9 +23,9 @@ namespace Robot {
         Escenari esc;
         DispatcherTimer rellotje;
         int time = 0;
-        public MainWindow() {
+        public MainWindow(int f, int c) {
             InitializeComponent();
-            esc = new Escenari(2,2);
+            esc = new Escenari(f,c);
             mainGrid.Children.Add(esc);
             rellotje = new DispatcherTimer();
 
