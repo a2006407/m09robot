@@ -23,6 +23,7 @@ namespace Robot {
         Escenari esc;
         DispatcherTimer rellotje;
         int time = 0;
+        bool running = false;
         public MainWindow(int f, int c) {
             InitializeComponent();
             esc = new Escenari(f,c);
@@ -31,18 +32,34 @@ namespace Robot {
 
             rellotje.Tick += Rellotje_Tick;
 
+            rellotje.Interval = TimeSpan.FromMilliseconds(100);
+            rellotje.Start();
         }
 
         private void Rellotje_Tick(object sender, EventArgs e) {
             time++; 
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e) {
-            if (esc.Mou()) {
-                EndWindow endW = new EndWindow(time, esc.robot.nmov, esc.robot.ndir);
-                endW.ShowDialog();
+            Mou();
+        }
+
+        private void Mou() {
+            if (running) {
+                if (esc.Mou()) {
+                    EndWindow endW = new EndWindow(0, esc.robot.nmov, esc.robot.ndir);
+                    endW.ShowDialog();
+                    rellotje.Stop();
+                }
             }
-                
+        }
+
+        private void Run(object sender, RoutedEventArgs e) {
+            running = true;
+        }
+        private void Stop(object sender, RoutedEventArgs e) {
+            running = false;
         }
     }
 }

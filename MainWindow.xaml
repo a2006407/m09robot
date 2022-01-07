@@ -10,8 +10,8 @@
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
             <Button Content="Mou"  Click="Button_Click"/>
             
-            <Button Content="Stop"  Click="Button_Click"/>
-            <Button Content="Continua"  Click="Button_Click"/>
+            <Button Content="Stop"  Click="Stop"/>
+            <Button Content="Continua"  Click="Run"/>
         </StackPanel>
     </DockPanel>
 </Window>
