@@ -22,6 +22,7 @@ namespace Robot {
     public partial class MainWindow : Window {
         Escenari esc;
         DispatcherTimer rellotje;
+        int time = 0;
         public MainWindow() {
             InitializeComponent();
             esc = new Escenari(2,2);
@@ -33,12 +34,12 @@ namespace Robot {
         }
 
         private void Rellotje_Tick(object sender, EventArgs e) {
-            
+            time++; 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             if (esc.Mou()) {
-                EndWindow endW = new EndWindow(0, esc.robot.nmov, esc.robot.ndir);
+                EndWindow endW = new EndWindow(time, esc.robot.nmov, esc.robot.ndir);
                 endW.ShowDialog();
             }
                 
