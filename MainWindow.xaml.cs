@@ -37,12 +37,17 @@ namespace Robot {
         }
 
         private void Rellotje_Tick(object sender, EventArgs e) {
-            time++; 
+            time++;
+            Mou();
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-            Mou();
+            if (esc.Mou()) {
+                EndWindow endW = new EndWindow(0, esc.robot.nmov, esc.robot.ndir);
+                endW.ShowDialog();
+                rellotje.Stop();
+            }
         }
 
         private void Mou() {
