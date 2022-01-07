@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace Robot.Classes {
     class Escenari : Grid {
@@ -16,11 +17,17 @@ namespace Robot.Classes {
 
         public Random rng;
 
+        DispatcherTimer rellotje;
         
         public Robot robot;
         Image tresorImg;
 
         public Escenari(int fil, int col) {
+
+            rellotje = new DispatcherTimer();
+
+            rellotje.Tick += Rellotje_Tick;
+
             columnes = col;
             files = fil;
 
@@ -59,6 +66,10 @@ namespace Robot.Classes {
             robot.SetValue(Grid.ColumnProperty, robot.PosY);
              
             Children.Add(robot);
+        }
+
+        private void Rellotje_Tick(object sender, EventArgs e) {
+            
         }
 
         internal bool Mou() {

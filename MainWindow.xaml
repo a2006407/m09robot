@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel x:Name="mainGrid">
-        <Button Content="Mou" DockPanel.Dock="Top" Click="Button_Click"/>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <Button Content="Mou"  Click="Button_Click"/>
+            
+            <Button Content="Stop"  Click="Button_Click"/>
+            <Button Content="Continua"  Click="Button_Click"/>
+        </StackPanel>
     </DockPanel>
 </Window>
