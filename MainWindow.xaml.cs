@@ -25,29 +25,32 @@ namespace Robot {
         bool running = false;
         public MainWindow() {
             InitializeComponent();
-            esc = new Escenari(2,2);
+            esc = new Escenari(5,5);
             mainGrid.Children.Add(esc);
             rellotje = new DispatcherTimer();
 
             rellotje.Tick += Rellotje_Tick;
 
+            rellotje.Interval = TimeSpan.FromMilliseconds(100);
+            rellotje.Start();
         }
 
         private void Rellotje_Tick(object sender, EventArgs e) {
+            Mou();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            Mou();
+        }
+
+        private void Mou() {
             if (running) {
                 if (esc.Mou()) {
                     EndWindow endW = new EndWindow(0, esc.robot.nmov, esc.robot.ndir);
                     endW.ShowDialog();
+                    rellotje.Stop();
                 }
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e) {
-            if (esc.Mou()) {
-                EndWindow endW = new EndWindow(0, esc.robot.nmov, esc.robot.ndir);
-                endW.ShowDialog();
-            }
-                
         }
 
         private void Run(object sender, RoutedEventArgs e) {
