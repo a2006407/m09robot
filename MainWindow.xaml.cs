@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Robot {
     /// <summary>
@@ -20,10 +21,19 @@ namespace Robot {
     /// </summary>
     public partial class MainWindow : Window {
         Escenari esc;
+        DispatcherTimer rellotje;
         public MainWindow() {
             InitializeComponent();
             esc = new Escenari(2,2);
             mainGrid.Children.Add(esc);
+            rellotje = new DispatcherTimer();
+
+            rellotje.Tick += Rellotje_Tick;
+
+        }
+
+        private void Rellotje_Tick(object sender, EventArgs e) {
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
